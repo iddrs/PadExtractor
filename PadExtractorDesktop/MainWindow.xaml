@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PadExtractorDesktop" d:DataContext="{d:DesignInstance Type=local:ProgressMonitor}"
         mc:Ignorable="d"
-        Title="PadExtractor" Height="450" Width="800" Icon="/convert.png" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner">
+        Title="PadExtractor" Height="450" Width="800" Icon="/padextractor.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner">
     <Grid x:Name="MainLayout">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>

@@ -7,10 +7,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>False</UseWindowsForms>
+    <StartupObject>PadExtractorDesktop.App</StartupObject>
+    <ApplicationIcon>padextractor.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="convert.png" />
+    <None Remove="padextractor.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="padextractor.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +31,9 @@
 
   <ItemGroup>
     <Resource Include="convert.png" />
+    <Resource Include="padextractor.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

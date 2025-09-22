@@ -2,5 +2,4 @@
   <Folder Name="/Itens de Solução/" />
   <Project Path="PadExtractor/PadExtractor.csproj" />
   <Project Path="PadExtractorDesktop/PadExtractorDesktop.csproj" Id="c9e6b669-fba7-4f8d-a660-ad2530834097" />
-  <Project Path="PadExtractorTerminal/PadExtractorTerminal.csproj" Id="5e4e65b5-cde8-440c-abe8-3852df4233bb" />
 </Solution>
