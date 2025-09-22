@@ -1,0 +1,12 @@
+{
+	"Path": {
+		"SourceDirs": [
+			"C:\\Users\\Everton\\Desktop\\Sistemas\\pad-converter3\\sources\\exe",
+			"C:\\Users\\Everton\\Desktop\\Sistemas\\pad-converter3\\sources\\leg"
+		],
+		"LayoutDir": ".\\layouts\\2025.01.rev22"
+	},
+	"Db": {
+		"ConnectionStr": "Host=localhost;Username=postgres;Password=lise890;Database=pmidd-dev"
+	}
+}
