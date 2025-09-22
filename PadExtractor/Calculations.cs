@@ -1,11 +1,14 @@
-﻿
-using PadExtractor.Transformer;
+﻿namespace PadExtractor.Calculation;
 
-namespace PadExtractor.Calculation;
+/**
+ * Executa cálculos sobre uma linha e retorna o valor da coluna.
+ */
 public class Calculations
 {
-    public static string DetectEntidade(Dictionary<string, object> row)
+    public static string? DetectEntidade(Dictionary<string, object> row)
     {
+        ArgumentNullException.ThrowIfNull(row);
+
         // Pega a entidade pelo campo orgao
         if (row.ContainsKey("orgao"))
         {
@@ -78,11 +81,13 @@ public class Calculations
 
     public static string Remessa(Dictionary<string, object> row)
     {
+        ArgumentNullException.ThrowIfNull(row);
         return "0";
     }
 
     public static string NaturezaReceita(Dictionary<string, object> row)
     {
+        ArgumentNullException.ThrowIfNull(row);
         string codigoReceita = row["codigo_receita"].ToString();
         switch (codigoReceita[0])
         {
@@ -99,6 +104,7 @@ public class Calculations
 
     public static string CategoriaReceita(Dictionary<string, object> row)
     {
+        ArgumentNullException.ThrowIfNull(row);
         if (Convert.ToInt32(row["caracteristica_peculiar_receita"]) > 0)
         {
             return "dedutora";
@@ -110,6 +116,8 @@ public class Calculations
             case '7':
             case '8':
                 return "intra";
+            case '9':
+                return "dedutora";
             default:
                 return "normal";
         }
@@ -279,6 +287,7 @@ public class Calculations
 
     public static string SaldoInicial(Dictionary<string, object> row)
     {
+        ArgumentNullException.ThrowIfNull(row);
         string contaContabil = row["conta_contabil"].ToString();
         switch (contaContabil[0])
         {
@@ -303,6 +312,7 @@ public class Calculations
 
     public static string SaldoAtual(Dictionary<string, object> row)
     {
+        ArgumentNullException.ThrowIfNull(row);
         string contaContabil = row["conta_contabil"].ToString();
         switch (contaContabil[0])
         {

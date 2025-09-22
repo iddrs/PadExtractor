@@ -1,30 +1,29 @@
 ﻿using System.Xml;
 
-namespace PadExtractor.Layout
+namespace PadExtractor.Layout;
+
+/**
+ * Representa um arquivo de layout.
+ */
+public class Layout
 {
-    /**
-     * Representa um arquivo de layout.
-     */
-    public class Layout
+    private readonly string layoutpath;
+    private readonly XmlDocument xml;
+
+
+    public Layout(string layoutpath)
     {
-        private readonly string layoutpath;
-        private readonly XmlDocument xml;
-
-
-        public Layout(string layoutpath)
+        this.layoutpath = layoutpath ?? throw new ArgumentNullException(nameof(layoutpath));
+        if (!File.Exists(layoutpath))
         {
-            this.layoutpath = layoutpath ?? throw new ArgumentNullException(nameof(layoutpath));
-            if (!File.Exists(layoutpath))
-            {
-                throw new FileNotFoundException(layoutpath);
-            }
-            xml = new XmlDocument();
-            xml.Load(layoutpath);
+            throw new FileNotFoundException(layoutpath);
         }
+        xml = new XmlDocument();
+        xml.Load(layoutpath);
+    }
 
-        public XmlNodeList GetCollumns()
-        {
-            return xml.DocumentElement.SelectNodes("//col");
-        }
+    public XmlNodeList GetCollumns()
+    {
+        return xml.DocumentElement.SelectNodes("//col");
     }
 }

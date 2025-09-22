@@ -71,7 +71,7 @@ public class Processor(SourceRepository sourceRepository, LayoutRepository layou
             {
                 ParseSource(source);
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
                 this.totalProcessedSize += source.fileSize;
             }

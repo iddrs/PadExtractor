@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace PadExtractor;
 
-namespace PadExtractor
+/**
+ * Interface para o monitor de progresso.
+ */
+public interface IProgressMonitor
 {
-    public interface IProgressMonitor
-    {
-        public void UpdateProgress(int current, string? message = null);
-    }
+    public void UpdateProgress(int current, string? message = null);
 }

@@ -1,7 +1,4 @@
-﻿using PadExtractor.Source;
-using System.IO;
-
-namespace PadExtractor.Layout;
+﻿namespace PadExtractor.Layout;
 
 /**
  * Representa o conjunto de layouts.
@@ -15,7 +12,8 @@ public class LayoutRepository
 
     public LayoutRepository(string layoutDir)
     {
-        this.layoutDir = layoutDir ?? throw new ArgumentNullException(nameof(layoutDir));
+        ArgumentException.ThrowIfNullOrWhiteSpace(layoutDir, nameof(layoutDir));
+        this.layoutDir = layoutDir;
         if(!Directory.Exists(layoutDir))
         { 
             throw new DirectoryNotFoundException(layoutDir);
