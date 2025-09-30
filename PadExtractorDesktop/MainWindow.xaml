@@ -24,6 +24,7 @@
                 <TextBlock Text="{Binding ProgressMessage}"></TextBlock>
             </StatusBarItem>
         </StatusBar>
+        <Button x:Name="btnOpenConfig" Content="Configurações" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="39" Margin="75,334,0,0" VerticalAlignment="Top" Width="91" Click="btnOpenConfig_Click"/>
 
     </Grid>
 </Window>

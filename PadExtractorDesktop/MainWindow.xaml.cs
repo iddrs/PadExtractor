@@ -15,13 +15,15 @@ namespace PadExtractorDesktop
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private string _connStr = "";
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new ProgressMonitor();
 
             var config = new ConfigurationBuilder()
-                .AddIniFile("appconfig.ini", optional: false, reloadOnChange: true)
+                .AddIniFile("lastdir.ini", optional: false, reloadOnChange: true)
                 .Build();
             ExecutivoSourceDirectoryEntry.Text = config["ExecutivoSourceDirectoryPath"];
             LegislativoSourceDirectoryEntry.Text = config["LegislativoSourceDirectoryPath"];
@@ -51,7 +53,7 @@ namespace PadExtractorDesktop
 
         private void SaveLastDirectories()
         {
-            using (StreamWriter writer = new StreamWriter("appconfig.ini"))
+            using (StreamWriter writer = new StreamWriter("lastdir.ini"))
             {
                 writer.WriteLine($"ExecutivoSourceDirectoryPath={ExecutivoSourceDirectoryEntry.Text}");
                 writer.WriteLine($"LegislativoSourceDirectoryPath={LegislativoSourceDirectoryEntry.Text}");
@@ -78,14 +80,22 @@ namespace PadExtractorDesktop
 
             if (this.DataContext is ProgressMonitor monitor)
             {
+                //var config = new ConfigurationBuilder()
+                //.AddJsonFile("appconfig.json", optional: false, reloadOnChange: true)
+                //.Build();
+                //string[] sourceDirs = [ExecutivoSourceDirectoryEntry.Text, LegislativoSourceDirectoryEntry.Text];
+                //SourceRepository sourceRepository = new PadExtractor.Source.SourceRepository(sourceDirs);
+                //LayoutRepository layoutRepository = new PadExtractor.Layout.LayoutRepository(config["Path:LayoutDir"]);
+                //WriterRepository writerRepository = new WriterRepository(config["Db:ConnectionStr"]);
                 var config = new ConfigurationBuilder()
-                .AddJsonFile("appconfig.json", optional: false, reloadOnChange: true)
+                .AddIniFile("appconfig.ini", optional: false, reloadOnChange: true)
                 .Build();
+                _connStr = $"Host={config["DbHost"]};Username={config["DbUser"]};Password={config["DbPassword"]};Database={config["DbName"]}";
                 string[] sourceDirs = [ExecutivoSourceDirectoryEntry.Text, LegislativoSourceDirectoryEntry.Text];
                 SourceRepository sourceRepository = new PadExtractor.Source.SourceRepository(sourceDirs);
-                LayoutRepository layoutRepository = new PadExtractor.Layout.LayoutRepository(config["Path:LayoutDir"]);
-                WriterRepository writerRepository = new WriterRepository(config["Db:ConnectionStr"]);
-            
+                LayoutRepository layoutRepository = new PadExtractor.Layout.LayoutRepository(config["LayoutDir"]);
+                WriterRepository writerRepository = new WriterRepository(_connStr);
+
                 Processor processor = new Processor(sourceRepository, layoutRepository, writerRepository, monitor);
                 this.Cursor = Cursors.Wait;
                 StartButton.IsEnabled = false;
@@ -97,7 +107,7 @@ namespace PadExtractorDesktop
                     monitor.ProgressMessage = "Processando os restos a pagar agora. Isso pode demorar um pouco...";
                     await Task.Run(() =>
                     {
-                        RestosPagarProcessor rp = new RestosPagarProcessor(config["Db:ConnectionStr"]);
+                        RestosPagarProcessor rp = new RestosPagarProcessor(_connStr);
                         rp.MontaRestosPagar(writerRepository.remessa);
                     });
                 }
@@ -113,5 +123,11 @@ namespace PadExtractorDesktop
             }
         }
 
+        private void btnOpenConfig_Click(object sender, RoutedEventArgs e)
+        {
+            var wndConfig = new ConfigWindow();
+            wndConfig.Owner = this;
+            wndConfig.ShowDialog();
+        }
     }
 }
