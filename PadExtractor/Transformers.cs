@@ -42,7 +42,7 @@ public class Transformers
 
     public static string CurrencyFmt(string val)
     {
-        if (int.TryParse(val, out int intValue))
+        if (long.TryParse(val, out long intValue))
         {
             return $"{Math.Round(intValue / 100.0, 2)}";
         }
@@ -58,7 +58,7 @@ public class Transformers
         string sinal = val.Substring(val.Length - 1, 1);
         string combined = sinal + valor;
 
-        if (int.TryParse(combined, out int intValue))
+        if (long.TryParse(combined, out long intValue))
         {
             return $"{Math.Round(intValue / 100.0, 2)}";
         }

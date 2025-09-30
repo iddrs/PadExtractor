@@ -79,14 +79,14 @@ vl_empenhado_liquidado_pago_exercicios_anteriores AS (
 		SELECT SUM(t.valor_empenho)
 		FROM PAD.empenho t
 		WHERE remessa = %remessa%
-		AND data_empenho < '%dataInicial%'
+		AND data_empenho < '%dataInicialAnoAnterior%'
 		AND t.chave_empenho = saldo_inicial_nao_processado.chave_empenho
 	), 0::money) AS empenhado_exercicios_anteriores,
 	COALESCE((
 		SELECT SUM(t.valor_liquidacao)
 		FROM PAD.liquidac t
 		WHERE remessa = %remessa%
-		AND data_liquidacao < '%dataInicial%'
+		AND data_liquidacao < '%dataInicialAnoAnterior%'
 		AND t.chave_empenho = saldo_inicial_nao_processado.chave_empenho
 	), 0::money) AS liquidado_exercicios_anteriores,
 	COALESCE((
