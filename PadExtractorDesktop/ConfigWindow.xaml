@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="Pad Extractor Configuration" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <TextBox x:Name="entryLayoutDirConfig" HorizontalAlignment="Left" Height="30" Margin="31,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="650"/>
+        <TextBox x:Name="entryLayoutDirConfig" HorizontalAlignment="Left" Height="30" Margin="31,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="650" TabIndex="1"/>
         <Label Content="Diretório dos arquivos de layout" HorizontalAlignment="Left" Height="35" Margin="26,40,0,0" VerticalAlignment="Top" Width="187"/>
-        <Button x:Name="btnSelectLayoutDirConfig" Content="Escolher" HorizontalAlignment="Left" Height="30" Margin="686,67,0,0" VerticalAlignment="Top" Width="83" Click="btnSelectLayoutDirConfig_Click"/>
+        <Button x:Name="btnSelectLayoutDirConfig" Content="Escolher" HorizontalAlignment="Left" Height="30" Margin="686,67,0,0" VerticalAlignment="Top" Width="83" Click="btnSelectLayoutDirConfig_Click" TabIndex="2"/>
         <Label Content="Configurações de conexão com o DB" HorizontalAlignment="Left" Height="35" Margin="27,108,0,0" VerticalAlignment="Top" Width="212"/>
         <Label Content="Host" HorizontalAlignment="Left" Height="35" Margin="26,138,0,0" VerticalAlignment="Top" Width="84"/>
-        <TextBox x:Name="entryHostConfig" HorizontalAlignment="Left" Height="30" Margin="115,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="654"/>
+        <TextBox x:Name="entryHostConfig" HorizontalAlignment="Left" Height="30" Margin="115,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="654" TabIndex="3"/>
         <Label Content="Usuário" HorizontalAlignment="Left" Height="35" Margin="26,183,0,0" VerticalAlignment="Top" Width="84"/>
-        <TextBox x:Name="entryDbUserConfig" HorizontalAlignment="Left" Height="30" Margin="115,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="654"/>
+        <TextBox x:Name="entryDbUserConfig" HorizontalAlignment="Left" Height="30" Margin="115,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="654" TabIndex="4"/>
         <Label Content="Senha" HorizontalAlignment="Left" Height="35" Margin="26,241,0,0" VerticalAlignment="Top" Width="84"/>
-        <PasswordBox x:Name="entryDbPasswordConfig" HorizontalAlignment="Left" Height="30" Margin="115,243,0,0" VerticalAlignment="Top" Width="654"/>
-        <Button x:Name="btnSaveConfig" Content="Salvar" HorizontalAlignment="Left" Height="43" Margin="661,343,0,0" VerticalAlignment="Top" Width="97" Click="btnSaveConfig_Click"/>
+        <PasswordBox x:Name="entryDbPasswordConfig" HorizontalAlignment="Left" Height="30" Margin="115,243,0,0" VerticalAlignment="Top" Width="654" TabIndex="5"/>
+        <Button x:Name="btnSaveConfig" Content="Salvar" HorizontalAlignment="Left" Height="43" Margin="661,343,0,0" VerticalAlignment="Top" Width="97" Click="btnSaveConfig_Click" TabIndex="7"/>
         <Label Content="Db name" HorizontalAlignment="Left" Height="35" Margin="26,293,0,0" VerticalAlignment="Top" Width="84"/>
-        <TextBox x:Name="entryDbNameconfig" HorizontalAlignment="Left" Height="30" Margin="115,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="654"/>
+        <TextBox x:Name="entryDbNameconfig" HorizontalAlignment="Left" Height="30" Margin="115,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="654" TabIndex="6"/>
 
     </Grid>
 </Window>
