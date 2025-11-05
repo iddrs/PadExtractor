@@ -272,7 +272,8 @@ saldo_final_nao_processado AS (
 ),
 saldo_final_processado AS (
 	SELECT saldo_final_nao_processado.*,
-	(saldo_inicial_processado - processado_cancelado - processado_pago + (rp_liquidado - nao_processado_pago)) AS saldo_final_processado
+--	(saldo_inicial_processado - processado_cancelado - processado_pago + (rp_liquidado - nao_processado_pago)) AS saldo_final_processado
+	(saldo_inicial_processado - processado_cancelado - processado_pago) AS saldo_final_processado
 	FROM saldo_final_nao_processado
 ),
 rp_saldo_final AS (
